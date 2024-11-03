@@ -1,0 +1,17 @@
+/* styles.css or the component's styles */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height of the viewport */
+}
+
+
+
+router-outlet {
+    flex: 1; /* This allows the router outlet to grow and take up available space */
+    display: flex; /* Optional: to center content within */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+

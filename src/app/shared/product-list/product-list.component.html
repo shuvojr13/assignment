@@ -1,0 +1,52 @@
+<ng-container class="loader" *ngIf="isLoading; else homeComponent">
+  <app-loading-spinner></app-loading-spinner>
+</ng-container>
+
+<ng-template #homeComponent>
+  <div class="tittle-section" *ngIf="inShow_All">
+    <div class="day">
+      <div class="box"></div>
+      <p>This Month</p>
+    </div>
+    <div class="tittle-bar-forTop-rated">
+      <div class="Tittle">Top Rated Products</div>
+    </div>
+  </div>
+  <div class="priceContainer">
+    <label for="minPrice">Min Price:</label>
+    <input type="number" id="minPrice" [(ngModel)]="minPrice" placeholder="Min Price" />
+    
+    <label for="maxPrice">Max Price:</label>
+    <input type="number" id="maxPrice" [(ngModel)]="maxPrice" placeholder="Max Price" />
+    
+    <button (click)="applyPriceFilter()" class="btn btn-danger">Filter</button>
+  </div>
+  
+  <!-- Product Display Section -->
+  <ng-template #homeComponent>
+    <div *ngIf="filteredProducts?.length > 0; else noProducts">
+      <div *ngFor="let product of filteredProducts" class="class-wrap">
+        <app-card class="card" [cardInfo]="product"></app-card>
+      </div>
+    </div>
+  </ng-template>
+  
+  <ng-template #noProducts>
+    <p>No products found in this price range.</p>
+  </ng-template>
+  
+
+  <div class="containerr card-grouppp card-wrapper">
+    <ng-container *ngIf="singleProduct; else otherWise">
+      <div class="class-wrap">
+        <app-card class="card" [cardInfo]="singleProduct"></app-card>
+      </div>
+    </ng-container>
+
+    <ng-template #otherWise>
+      <div *ngFor="let product of products" class="class-wrap">
+        <app-card class="card" [cardInfo]="product"></app-card>
+      </div>
+    </ng-template>
+  </div>
+</ng-template>
